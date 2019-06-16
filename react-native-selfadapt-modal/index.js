@@ -9,7 +9,7 @@ import {
     View,
 } from 'react-native';
 
-import LocationModal from './src/LocationModal';
+import LocationModal from './LocationModal';
 import PropTypes from 'prop-types';
 
 export default class LocationIndex extends React.PureComponent {
