@@ -12,7 +12,7 @@ import {
 import LocationModal from './LocationModal';
 import PropTypes from 'prop-types';
 
-export default class LocationIndex extends React.PureComponent {
+class LocationIndex extends React.PureComponent {
     static propTypes = {
         menuList: PropTypes.array.isRequired, //选项列表
         children: PropTypes.element.isRequired, //子元素
@@ -65,3 +65,5 @@ export default class LocationIndex extends React.PureComponent {
 const styles = StyleSheet.create({
     
 });
+
+module.exports = LocationIndex;
