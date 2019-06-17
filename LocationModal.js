@@ -23,9 +23,9 @@ import PropTypes from 'prop-types';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
-const basePx = 375;
+// const basePx = 375;
 const Size = (font) => {
-    return font * screenWidth / basePx;
+    return font * screenWidth / 375;
 }
 
 const AndroidStatusBar = Platform.OS == 'android'? StatusBar.currentHeight: 0;

@@ -1,20 +1,21 @@
 /**
- * 
+ * 测试
  */
 import React from 'react';
 import { 
     StyleSheet, 
     View, 
     Text,
+    StatusBar,
     Dimensions,
 } from 'react-native';
 
 import SelfadaptModal from 'react-native-selfadapt-modal';
 
 const screenWidth = Dimensions.get('window').width;
-const basePx = 375;
+// const basePx = 375;
 const Size = (font) => {
-    return font * screenWidth / basePx;
+    return font * screenWidth / 375;
 }
 
 const TestData = [
@@ -38,7 +39,6 @@ export default class App extends React.Component {
         return (
             <View style={styles.horizontalBox}>
                 <Text style={{fontSize:Size(14),color:'#000'}}>{`12212`}</Text>
-                <Icon name={'return'} color={'#000'} size={Size(18)}/>
                 <Text style={{fontSize:Size(14),color:'#000'}}>{`${item}`}</Text>
                 <Text style={{fontSize:Size(14),color:'#333'}}>{`qqqqq`}</Text>
             </View>
@@ -56,6 +56,10 @@ export default class App extends React.Component {
     render() {
         return (
             <View style={{flex:1}}>
+                <StatusBar
+                    backgroundColor={'red'}
+                    barStyle={'light-content'}/>
+                {this.renderNavbar()}
                 <SelfadaptModal 
                     menuList={TestData} 
                     paddingWidth={10} 
@@ -64,7 +68,7 @@ export default class App extends React.Component {
                     activeMenuStyle={{backgroundColor:'orange'}}
                     activeMenuTextStyle={{color:'gray',fontSize:Size(36)}}
                     content={'第二条'}
-                    privateMenuItem={this.renderPrivateMenuItem}
+                    // privateMenuItem={this.renderPrivateMenuItem}
                     >
                     <Text style={{fontSize:Size(14),color:'#000'}}>{`你是个啥？`}</Text>
                 </SelfadaptModal>
@@ -75,6 +79,7 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
     navbar: {
+        marginTop: 20,
         height: 40,
         width: screenWidth,
         justifyContent: 'center',
