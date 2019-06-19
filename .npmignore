@@ -1,1 +1,2 @@
-*.DEMO
+# ignore DEMO
+/DEMO/

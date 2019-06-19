@@ -14,21 +14,15 @@ import {
     FlatList,
     Platform,
     StatusBar,
-    Dimensions,
     TouchableOpacity,
 } from 'react-native';
 
+import {screenWidth,screenHeight,Size} from './constr';
 import Modal from './NativeModal';
 import PropTypes from 'prop-types';
 
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
-// const basePx = 375;
-const Size = (font) => {
-    return font * screenWidth / 375;
-}
-
 const AndroidStatusBar = Platform.OS == 'android'? StatusBar.currentHeight: 0;
+const DefaultModalWidth = screenWidth-(Platform.OS=='ios'?10:20);
 
 export default class LocationModal extends React.PureComponent {
     static propTypes = {
@@ -60,29 +54,32 @@ export default class LocationModal extends React.PureComponent {
         this.state = {
             menuList: props.menuList || [],
             visible: false,
-            itemHeight: 0,
-            yNumber: 0,
+            position: {},
         };
         this.callback = () => {};
     }
 
-    onShow(data={},position={y:0,height:0},callback) {
+    onShow(data={},position={},callback) {
         this.callback = callback;
         this.setState({
             menuList: data,
-            yNumber: position&&position.y,
-            itemHeight: position&&position.height,
+            position: position,
             visible: true,
         });
     }
 
     /** 获取默认的弹出位置,通过样式的形式返回 */
     getPositionStyle = () => {
+        let { position={} } = this.state;
         let positionStyle = {};
-        if (parseInt(this.state.yNumber) > parseInt(screenHeight / 2)) {
-            positionStyle = {bottom: screenHeight - (this.state.yNumber + AndroidStatusBar - this.props.paddingWidth) };
+        if (parseInt(position.top) > parseInt(screenHeight / 2)) {
+            positionStyle = {bottom: screenHeight-(position.top+AndroidStatusBar-this.props.paddingWidth)};
         } else {
-            positionStyle = {top: this.state.yNumber + this.state.itemHeight + this.props.paddingWidth };
+            positionStyle = {top: position.top+position.height+this.props.paddingWidth};
+        }
+        if (position&&position.left&&position.left>10) {
+            positionStyle.left = position.left;
+            positionStyle.maxWidth = screenWidth-position.left-(Platform.OS=='ios'?5:10); //iOS自带右边距
         }
         return positionStyle;
     }
@@ -139,10 +136,10 @@ export default class LocationModal extends React.PureComponent {
 
 const styles = StyleSheet.create({
     modalBox: {
-        maxWidth: screenWidth-(Platform.OS == 'ios'?10:20),
+        maxWidth: DefaultModalWidth,
         maxHeight: screenHeight*0.4,
         position: 'absolute',
-        right: 10,
+        left: 10,
         paddingHorizontal: 10,
         borderRadius: 3,
         backgroundColor: '#fff',

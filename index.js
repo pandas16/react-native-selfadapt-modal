@@ -34,19 +34,16 @@ class LocationIndex extends React.PureComponent {
     }
 
     getPosition = (callback) => {
-        this.listRow&&this.listRow.measureInWindow((x, y, width, height) => {
-            this.yaxis = y;
-            this.itemHeight = height;
-            callback&&callback();
+        this.listRow&&this.listRow.measureInWindow((left, top, width, height) => {
+            callback&&callback({left, top, width, height});
         });
     }
 
     onDownDropClick = () => {
-        this.getPosition(()=>{
+        this.getPosition((position)=>{
             let downDropData = this.props.menuList || [];
-            let position = {y:this.yaxis,height:this.itemHeight};
-            this.itemModal&&this.itemModal.onShow(downDropData,position,(res)=>{
-                this.props.onPress&&this.props.onPress(res);
+            this.itemModal&&this.itemModal.onShow(downDropData,position,(onClickRes)=>{
+                this.props.onPress&&this.props.onPress(onClickRes);
             });
         });
     }
@@ -55,7 +52,9 @@ class LocationIndex extends React.PureComponent {
         return (
             <TouchableOpacity onPress={()=>this.onDownDropClick()} activeOpacity={0.7}
                 collapsable={false} ref={(o)=>this.listRow=o} style={this.props.containerStyle}>
-                {this.props.children}
+                <View>
+                    {this.props.children}
+                </View>
                 <LocationModal ref={(o)=>this.itemModal=o} {...this.props} />
             </TouchableOpacity>
         );
