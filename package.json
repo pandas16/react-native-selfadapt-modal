@@ -6,11 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pandas16/react-native-selfadapt-modal.git"
+  },
   "keywords": [
-    "react-native"
+    "react-native-component",
+    "react-component",
+    "react-native",
+    "modal",
+    "selfadapt"
   ],
-  "author": "",
-  "license": "",
+  "author": "szx",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2"
   }
