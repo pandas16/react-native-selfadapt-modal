@@ -9,7 +9,7 @@
 
 Demo
 
-![效果图](https://img-blog.csdnimg.cn/20190626141208779.gif)
+<img src="https://img-blog.csdnimg.cn/20190626141208779.gif" height="55%" width="55%">
 
 ```javascript
 import SelfadaptModal from 'react-native-selfadapt-modal';
@@ -69,5 +69,4 @@ unActiveMenuTextStyle |object |否 |未选中单项选项文本样式 |无 |无 
 children |element |是 |子元素 |无 |无 |
 onPress |func |否 |下拉选项点击事件 |无 |无 |
 containerStyle |object |否 |按钮样式 |无 |无 |
-other |--- |--- |请查阅LocationModal |--- |--- |
 
