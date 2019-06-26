@@ -9,7 +9,7 @@
 
 Demo
 
-<img src="https://img-blog.csdnimg.cn/20190626141208779.gif" height="55%" width="55%">
+<img src="https://s2.ax1x.com/2019/06/26/ZedQz9.gif" height="55%" width="55%">
 
 ```javascript
 import SelfadaptModal from 'react-native-selfadapt-modal';
