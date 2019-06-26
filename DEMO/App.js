@@ -23,14 +23,14 @@ const Size = function (font) {
     return font * screenWidth / basePx;
 }
 const TestData = [
-    {id:10086,name:'选项1选项1选项1选项1选项1选项1选项1选项1选项1选项1选项1'},
-    {id:10087,name:'选项2'},
-    {id:10088,name:'选项3'},
-    {id:10089,name:'选项4'},
+    {id:10086,name:'Option 1(This is a long, long, long option.)'},
+    {id:10087,name:'Option 2'},
+    {id:10088,name:'Option 3'},
+    {id:10089,name:'Option 4'},
 ];
 const TestData2 = [
-    {id:10010,name:'男'},
-    {id:10011,name:'女'},
+    {id:10010,name:'man'},
+    {id:10011,name:'woman'},
 ];
 
 export default class App extends React.Component {
@@ -57,7 +57,7 @@ export default class App extends React.Component {
     renderPrivateMenuItemOne = (item,index,isSelect) => {
         return (
             <View style={styles.horizontalBox}>
-                <Image style={styles.demoThreeImg} source={item&&item.name=='男'?manIcon:womanIcon}/>
+                <Image style={styles.demoThreeImg} source={item&&item.name=='man'?manIcon:womanIcon}/>
                 <Text style={{fontSize:Size(16),color:'#000'}}>{`${item&&item.name}`}</Text>
             </View>
         )
@@ -76,26 +76,26 @@ export default class App extends React.Component {
     renderNavbar = () => {
         return (
             <View style={styles.navbarContainer}>
-                <Text style={{fontSize:Size(16),color:'#fff'}}>{`测试`}</Text>
+                <Text style={{fontSize:Size(16),color:'#fff'}}>{`Test`}</Text>
             </View>
         );
     }
 
     render() {
-        let demoTwoBg = this.state.demoTwoValue=='男'?'orange':'red';
+        let demoTwoBg = this.state.demoTwoValue=='man'?'orange':'red';
         return (
             <View style={{flex:1}}>
                 {this.renderStatusBar()}
                 {this.renderNavbar()}
                 <ScrollView style={styles.contentContainer}>
                     <View style={styles.demoOneBox}>
-                        <Text style={{fontSize:Size(14),color:'#000',marginRight:10}}>{`普通样式:`}</Text>
+                        <Text style={{fontSize:Size(14),color:'#000',marginRight:10}}>{`demo one:`}</Text>
                         <SelfadaptModal 
                             menuList={TestData} 
                             containerStyle={styles.demeOneBtn}
                             content={this.state.demoOneValue}
                             onPress={(res)=>this.doSelect(res,'demoOneValue')}>
-                            <Text style={{fontSize:Size(14),color:'#fff'}}>{`点击选择`}</Text>
+                            <Text style={{fontSize:Size(14),color:'#fff'}}>{`click here`}</Text>
                         </SelfadaptModal>
                         <Text style={styles.demoOneResult} numberOfLines={2}>
                             {`${this.state.demoOneValue||''}`}
@@ -117,15 +117,15 @@ export default class App extends React.Component {
                             content={this.state.demoTwoValue}
                             onPress={(res)=>this.doSelect(res,'demoTwoValue')}
                             privateMenuItem={this.renderPrivateMenuItemOne}>
-                            <Text style={{fontSize:Size(14),color:'#000'}}>{`选择性别`}</Text>
+                            <Text style={{fontSize:Size(14),color:'#000'}}>{`selective sex`}</Text>
                         </SelfadaptModal>
-                        <Image style={styles.demoThreeImg} source={this.state.demoTwoValue=='男'?manIcon:womanIcon}/>
+                        <Image style={styles.demoThreeImg} source={this.state.demoTwoValue=='man'?manIcon:womanIcon}/>
                     </View>
                     <View style={{height:250}}>
-                        <Text style={{fontSize:Size(14),color:'#000',textAlign:'center'}}>{`↓↓↓向下滑动↓↓↓`}</Text>
+                        <Text style={{fontSize:Size(14),color:'#000',textAlign:'center'}}>{`↓↓↓slide down↓↓↓`}</Text>
                     </View>
                     <View style={styles.demoOneBox}>
-                        <Text style={{fontSize:Size(14),color:'#000',marginRight:10}}>{`向上展开:`}</Text>
+                        <Text style={{fontSize:Size(14),color:'#000',marginRight:10}}>{`spread up:`}</Text>
                         <SelfadaptModal 
                             menuList={TestData} 
                             containerStyle={styles.demeOneBtn}
@@ -134,7 +134,7 @@ export default class App extends React.Component {
                             unActiveMenuTextStyle={{fontSize:Size(12),color:'grey'}}
                             content={this.state.demoOneValue}
                             onPress={(res)=>this.doSelect(res,'demoOneValue')}>
-                            <Text style={{fontSize:Size(14),color:'#fff'}}>{`点击选择`}</Text>
+                            <Text style={{fontSize:Size(14),color:'#fff'}}>{`click here`}</Text>
                         </SelfadaptModal>
                         <Text style={styles.demoOneResult} numberOfLines={2}>
                             {`${this.state.demoOneValue||''}`}

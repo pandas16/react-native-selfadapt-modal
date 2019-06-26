@@ -7,14 +7,18 @@
 
 ## Usage
 
+Demo
+
+![效果图](https://img-blog.csdnimg.cn/20190626141208779.gif)
+
 ```javascript
 import SelfadaptModal from 'react-native-selfadapt-modal';
 
 const TestData = [
-    {id:10086,name:'选项1选项1选项1选项1选项1选项1选项1选项1选项1选项1选项1'},
-    {id:10087,name:'选项2'},
-    {id:10088,name:'选项3'},
-    {id:10089,name:'选项4'},
+    {id:10086,name:'Option 1(This is a long, long, long option.)'},
+    {id:10087,name:'Option 2'},
+    {id:10088,name:'Option 3'},
+    {id:10089,name:'Option 4'},
 ];
 
 render = () => {
@@ -24,7 +28,7 @@ render = () => {
             containerStyle={styles.demeOneBtn}
             content={this.state.demoOneValue}
             onPress={(res)=>this.doSelect(res,'demoOneValue')}>
-            <Text style={{fontSize:Size(14),color:'#fff'}}>{`点击选择`}</Text>
+            <Text style={{fontSize:Size(14),color:'#fff'}}>{`click here`}</Text>
         </SelfadaptModal>
     );
 }
@@ -42,7 +46,7 @@ const styles = StyleSheet.create({
 
 ## API
 
-### LocationModal
+### 关于弹框
 
 属性名称 | 类型 | 是否必须 | 说明 | 默认值 | 备注 |
 :--- |:--- |:--- |:--- |:--- |:--- |
@@ -58,7 +62,7 @@ activeMenuTextStyle |object |否 |选中单项选项文本样式 |无 |无 |
 unActiveMenuTextStyle |object |否 |未选中单项选项文本样式 |无 |无 |
 
 
-### index
+### 关于按钮
 
 属性名称 | 类型 | 是否必须 | 说明 | 默认值 | 备注 |
 :--- |:--- |:--- |:--- |:--- |:--- |
