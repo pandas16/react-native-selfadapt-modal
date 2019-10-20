@@ -80,6 +80,11 @@ export default class LocationModal extends React.PureComponent {
         if (position&&position.left&&position.left>10) {
             positionStyle.left = position.left;
             positionStyle.maxWidth = screenWidth-position.left-(Platform.OS=='ios'?5:10); //iOS自带右边距
+            
+        if (modalStyle && modalStyle.width && modalStyle.width > positionStyle.maxWidth) {
+                positionStyle.left = screenWidth - modalStyle.width - (Platform.OS == 'ios' ? 5 : 10);
+                positionStyle.maxWidth = modalStyle.width;
+            }
         }
         return positionStyle;
     }
