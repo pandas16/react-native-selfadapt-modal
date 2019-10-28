@@ -71,6 +71,7 @@ export default class LocationModal extends React.PureComponent {
     /** 获取默认的弹出位置,通过样式的形式返回 */
     getPositionStyle = () => {
         let { position={} } = this.state;
+        const { modalStyle } = this.props;
         let positionStyle = {};
         if (parseInt(position.top) > parseInt(screenHeight / 2)) {
             positionStyle = {bottom: screenHeight-(position.top+AndroidStatusBar-this.props.paddingWidth)};
