@@ -7,6 +7,8 @@ import {
     StyleSheet,
     TouchableOpacity,
     View,
+    Keyboard,
+    ViewPropTypes,
 } from 'react-native';
 
 import LocationModal from './LocationModal';
@@ -17,7 +19,7 @@ class LocationIndex extends React.PureComponent {
         menuList: PropTypes.array.isRequired, //选项列表
         children: PropTypes.element.isRequired, //子元素
         onPress: PropTypes.func, //点击事件
-        containerStyle: PropTypes.object, //按钮样式
+        containerStyle: ViewPropTypes.style, //按钮样式
         ...View.propTypes
     }
 
@@ -40,11 +42,14 @@ class LocationIndex extends React.PureComponent {
     }
 
     onDownDropClick = () => {
+        Keyboard.dismiss();
         this.getPosition((position)=>{
             let downDropData = this.props.menuList || [];
-            this.itemModal&&this.itemModal.onShow(downDropData,position,(onClickRes)=>{
-                this.props.onPress&&this.props.onPress(onClickRes);
-            });
+            if (downDropData&&downDropData.length>0) {
+                this.itemModal&&this.itemModal.onShow(downDropData,position,(onClickRes)=>{
+                    this.props.onPress&&this.props.onPress(onClickRes);
+                });
+            }
         });
     }
 
@@ -52,9 +57,7 @@ class LocationIndex extends React.PureComponent {
         return (
             <TouchableOpacity onPress={()=>this.onDownDropClick()} activeOpacity={0.7}
                 collapsable={false} ref={(o)=>this.listRow=o} style={this.props.containerStyle}>
-                <View>
-                    {this.props.children}
-                </View>
+                {this.props.children}
                 <LocationModal ref={(o)=>this.itemModal=o} {...this.props} />
             </TouchableOpacity>
         );

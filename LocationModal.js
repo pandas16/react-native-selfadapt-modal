@@ -14,6 +14,7 @@ import {
     FlatList,
     Platform,
     StatusBar,
+    ViewPropTypes,
     TouchableOpacity,
 } from 'react-native';
 
@@ -31,11 +32,12 @@ export default class LocationModal extends React.PureComponent {
         content: PropTypes.string, //默认选项
         paddingWidth: PropTypes.number, //按钮的padding高度
         privateMenuItem: PropTypes.func, //自定义选项组件
-        modalStyle: PropTypes.object, //modal样式
-        activeMenuStyle: PropTypes.object, //选中单项选项容器样式
-        unActiveMenuStyle: PropTypes.object, //未选中单项选项容器样式
-        activeMenuTextStyle: PropTypes.object, //选中单项选项文本样式
-        unActiveMenuTextStyle: PropTypes.object, //未选中单项选项文本样式
+        modalStyle: ViewPropTypes.style, //modal样式
+        activeMenuStyle: ViewPropTypes.style, //选中单项选项容器样式
+        unActiveMenuStyle: ViewPropTypes.style, //未选中单项选项容器样式
+        flatListStyle: ViewPropTypes.style, //FlatList样式
+        activeMenuTextStyle: Text.propTypes.style, //选中单项选项文本样式
+        unActiveMenuTextStyle: Text.propTypes.style, //未选中单项选项文本样式
         ...View.propTypes
     }
 
@@ -71,6 +73,7 @@ export default class LocationModal extends React.PureComponent {
     /** 获取默认的弹出位置,通过样式的形式返回 */
     getPositionStyle = () => {
         let { position={} } = this.state;
+        let { modalStyle={} } = this.props;
         let positionStyle = {};
         if (parseInt(position.top) > parseInt(screenHeight / 2)) {
             positionStyle = {bottom: screenHeight-(position.top+AndroidStatusBar-this.props.paddingWidth)};
@@ -80,6 +83,11 @@ export default class LocationModal extends React.PureComponent {
         if (position&&position.left&&position.left>10) {
             positionStyle.left = position.left;
             positionStyle.maxWidth = screenWidth-position.left-(Platform.OS=='ios'?5:10); //iOS自带右边距
+        }
+        if (modalStyle&&modalStyle.hasOwnProperty('right')&&modalStyle.right>0) {
+            positionStyle.left = undefined;
+            positionStyle.right = modalStyle.right;
+            positionStyle.maxWidth = screenWidth-modalStyle.right-(Platform.OS=='ios'?5:10);
         }
         return positionStyle;
     }
@@ -91,6 +99,14 @@ export default class LocationModal extends React.PureComponent {
     onMenuItemClick = (item,index) => {
         this.callback && this.callback(item,index);
         this.onClose();
+    }
+
+    renderEmptyView = () => {
+        return (
+            <View style={{height:screenWidth*0.5,justifyContent:'center',alignItems:'center'}}>
+                <Text style={{fontSize:Size(13),color:'#333'}}>{`暂无数据`}</Text>
+            </View>
+        );
     }
 
     renderMenuItem = ({item,index}) => {
@@ -113,24 +129,23 @@ export default class LocationModal extends React.PureComponent {
     }
 
     render() {
-        let { modalStyle={},ItemSeparatorComponent } = this.props;
-        if (this.state.menuList&&this.state.menuList.length>0) {
-            return (
-                <Modal visible={this.state.visible} onClose={()=>this.onClose()}>
-                    <View style={[styles.modalBox,this.getPositionStyle(),modalStyle]}>
-                        <FlatList
-                            data={this.state.menuList}
-                            extraData={this.state}
-                            keyExtractor={(item,index)=>{return 'menusIndex'+index}}
-                            renderItem={this.renderMenuItem}
-                            ItemSeparatorComponent={ItemSeparatorComponent?ItemSeparatorComponent:this.renderSeparator}
-                            showsVerticalScrollIndicator={false}/>
-                    </View>
-                </Modal>
-            )   
-        }else {
-            return null;
-        }
+        let { modalStyle,ItemSeparatorComponent,flatListStyle } = this.props;
+        return (
+            <Modal visible={this.state.visible} onClose={()=>this.onClose()}>
+                <View style={[styles.modalBox,this.getPositionStyle(),modalStyle]}>
+                    <FlatList
+                        {...this.props}
+                        style={flatListStyle}
+                        data={this.state.menuList}
+                        extraData={this.state}
+                        keyExtractor={(item,index)=>{return 'menusIndex'+index}}
+                        renderItem={this.renderMenuItem}
+                        ItemSeparatorComponent={ItemSeparatorComponent?ItemSeparatorComponent:this.renderSeparator}
+                        ListEmptyComponent={this.renderEmptyView}
+                        showsVerticalScrollIndicator={false}/>
+                </View>
+            </Modal>
+        );
     }
 }
 

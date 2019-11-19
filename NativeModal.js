@@ -14,7 +14,8 @@ export default class NativeModal extends Component{
 				animationType = {this.props.animationType?this.props.animationType:'fade'}
 				visible = {this.props.visible&&this.props.visible}
 				onRequestClose = {()=>{this.props.onClose&&this.props.onClose()}}
-				transparent = {true}>
+				transparent = {true} 
+				supportedOrientations={['portrait', 'landscape']}>
 				<View style = {[styles.container,this.props.style]}>
 					<TouchableWithoutFeedback onPress = {()=>{this.props.onClose&&this.props.onClose()}}>
 						<View style = {[styles.overlay,{backgroundColor:'#000',opacity:0.5}]}/>
