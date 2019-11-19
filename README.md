@@ -56,6 +56,7 @@ content |string |否 |默认选项 |无 |无 |
 paddingWidth |number |否 |按钮的padding高度 |0 | 当使用LocationModal</br>的按钮还有外层包裹</br>时可能需要使用 |
 privateMenuItem |func |否 |自定义选项组件 |无 |包含三个参数</br>item,index,isSelect |
 modalStyle |object |否 |modal样式 |无 |无 |
+flatListStyle |object |否 |FlatList样式 |无 |无 |
 activeMenuStyle |object |否 |选中单项选项容器样式 |无 |无 |
 unActiveMenuStyle |object |否 |未选中单项选项容器样式 |无 |无 |
 activeMenuTextStyle |object |否 |选中单项选项文本样式 |无 |无 |
@@ -69,4 +70,13 @@ unActiveMenuTextStyle |object |否 |未选中单项选项文本样式 |无 |无 
 children |element |是 |子元素 |无 |无 |
 onPress |func |否 |下拉选项点击事件 |无 |无 |
 containerStyle |object |否 |按钮样式 |无 |无 |
+
+
+### 更新日志
+
+#### 1.1.0 
+
+1.调整PropTypes类型，消除警告
+2.修复列表元素靠右对齐时的显示异常
+3.调整列表数据为空时，组件的处理方式
 
