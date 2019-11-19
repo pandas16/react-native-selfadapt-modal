@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 class LocationIndex extends React.PureComponent {
     static propTypes = {
         menuList: PropTypes.array.isRequired, //选项列表
-        children: PropTypes.element.isRequired, //子元素
+        children: PropTypes.node.isRequired, //子元素
         onPress: PropTypes.func, //点击事件
         containerStyle: ViewPropTypes.style, //按钮样式
         ...View.propTypes
