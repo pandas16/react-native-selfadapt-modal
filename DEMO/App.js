@@ -44,6 +44,11 @@ export default class App extends React.Component {
         };
     }
 
+    onOpenStatusChange = (res) => {
+        console.log('===res===',res);
+        this.setState({openStatus: res==1?'展开':'关闭'});
+    }
+
     doSelect = (value,label) => {
         this.setState({
             [label]: value&&value.name,
@@ -94,9 +99,11 @@ export default class App extends React.Component {
                             menuList={TestData} 
                             containerStyle={styles.demeOneBtn}
                             content={this.state.demoOneValue}
-                            onPress={(res)=>this.doSelect(res,'demoOneValue')}>
+                            onPress={(res)=>this.doSelect(res,'demoOneValue')}
+                            openStatus={(res)=>this.onOpenStatusChange(res)}>
                             <Text style={{fontSize:Size(14),color:'#fff'}}>{`click here`}</Text>
                         </SelfadaptModal>
+                        <Text style={{fontSize:Size(14),color:'#000'}}>{this.state.openStatus}</Text>
                         <Text style={styles.demoOneResult} numberOfLines={2}>
                             {`${this.state.demoOneValue||''}`}
                         </Text>

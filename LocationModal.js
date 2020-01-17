@@ -61,10 +61,11 @@ export default class LocationModal extends React.PureComponent {
             position: {},
         };
         this.callback = () => {};
-        this.closeCallBack = props.closeCallBack?props.closeCallBack:null;
+        this.openStatus = props.openStatus?props.openStatus:null;
     }
 
     onShow(data={},position={},callback) {
+        this.openStatus&&this.openStatus(1);
         this.callback = callback;
         this.setState({
             menuList: data,
@@ -97,7 +98,7 @@ export default class LocationModal extends React.PureComponent {
 
     onClose() {
         this.setState({visible:false},()=>{
-            this.closeCallBack&&this.closeCallBack(1);
+            this.openStatus&&this.openStatus(0);
         });
     }
 
