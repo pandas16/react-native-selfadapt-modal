@@ -1,6 +1,6 @@
 {
   "name": "react-native-selfadapt-modal",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "This is a bullet window that can adapt itself to the unfolding position.",
   "main": "index.js",
   "scripts": {
