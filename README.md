@@ -61,6 +61,8 @@ activeMenuStyle |object |否 |选中单项选项容器样式 |无 |无 |
 unActiveMenuStyle |object |否 |未选中单项选项容器样式 |无 |无 |
 activeMenuTextStyle |object |否 |选中单项选项文本样式 |无 |无 |
 unActiveMenuTextStyle |object |否 |未选中单项选项文本样式 |无 |无 |
+openStatus |func |否 |获取Modal展开状态的回调函数 |无 |无 |
+listHeader |func |否 |固定的列表头部,非固定头部可传入ListHeaderComponent实现 |无 |无 |
 
 
 ### 关于按钮
@@ -79,4 +81,13 @@ containerStyle |object |否 |按钮样式 |无 |无 |
 1.调整PropTypes类型，消除警告
 2.修复列表元素靠右对齐时的显示异常
 3.调整列表数据为空时，组件的处理方式
+
+#### 1.1.3
+
+1.添加Modal展开状态的获取,通过openStatus回调函数实现
+2.添加固定的列表头部(listHeader),使用场景:例如列表搜索框
+
+### 下一步的计划
+
+适配列表分页
 
