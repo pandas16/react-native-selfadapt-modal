@@ -38,6 +38,8 @@ export default class LocationModal extends React.PureComponent {
         flatListStyle: ViewPropTypes.style, //FlatList样式
         activeMenuTextStyle: Text.propTypes.style, //选中单项选项文本样式
         unActiveMenuTextStyle: Text.propTypes.style, //未选中单项选项文本样式
+        closeCallBack: PropTypes.func, //关闭弹框回调
+        listHeader: PropTypes.func, //固定的列表头部
         ...View.propTypes
     }
 
@@ -59,6 +61,7 @@ export default class LocationModal extends React.PureComponent {
             position: {},
         };
         this.callback = () => {};
+        this.closeCallBack = props.closeCallBack?props.closeCallBack:null;
     }
 
     onShow(data={},position={},callback) {
@@ -93,7 +96,9 @@ export default class LocationModal extends React.PureComponent {
     }
 
     onClose() {
-        this.setState({visible:false});
+        this.setState({visible:false},()=>{
+            this.closeCallBack&&this.closeCallBack(1);
+        });
     }
 
     onMenuItemClick = (item,index) => {
@@ -129,10 +134,11 @@ export default class LocationModal extends React.PureComponent {
     }
 
     render() {
-        let { modalStyle,ItemSeparatorComponent,flatListStyle } = this.props;
+        let { modalStyle,ItemSeparatorComponent,flatListStyle,listHeader } = this.props;
         return (
             <Modal visible={this.state.visible} onClose={()=>this.onClose()}>
                 <View style={[styles.modalBox,this.getPositionStyle(),modalStyle]}>
+                    {listHeader&&listHeader()}
                     <FlatList
                         {...this.props}
                         style={flatListStyle}

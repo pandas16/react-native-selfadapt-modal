@@ -4,7 +4,6 @@
  */
 import React from 'react';
 import { 
-    StyleSheet,
     TouchableOpacity,
     View,
     Keyboard,
@@ -63,9 +62,4 @@ class LocationIndex extends React.PureComponent {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    
-});
-
 module.exports = LocationIndex;
