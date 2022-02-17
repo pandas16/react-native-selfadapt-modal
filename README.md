@@ -1,6 +1,6 @@
  ## 声明
  
- 因为工作原因，该插件已经停止维护了，如果还有小伙伴需要使用请fork自行修改。
+ 因为工作原因，该插件已经停止维护了，如果还有小伙伴需要使用可copy LocationModal.js、NativeModal.js 后自行修改。
  
 # react-native-selfadapt-modal
 
