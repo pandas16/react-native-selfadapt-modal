@@ -2564,9 +2564,9 @@ has@^1.0.1, has@^1.0.3:
     function-bind "^1.1.1"
 
 hosted-git-info@^2.1.4:
-  version "2.7.1"
-  resolved "https://registry.npm.taobao.org/hosted-git-info/download/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
-  integrity sha1-l/I2l3vW4SVAiTD/bePuxigewEc=
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 html-encoding-sniffer@^1.0.2:
   version "1.0.2"
@@ -4857,6 +4857,11 @@ react-is@^16.8.1, react-is@^16.8.3, react-is@^16.8.4:
   version "16.8.6"
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha1-W7weLSkUHJ+9/tRWND/ivEMKahY=
+
+react-native-selfadapt-modal@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-selfadapt-modal/-/react-native-selfadapt-modal-1.1.3.tgz#c576ea6c9335250d29ee8f77633cbb37c84464d4"
+  integrity sha512-tY2FyLpdIZovluukkWsnPe3QriagIkPAVofYQBltQk0dEgqSIh/10K7uPdQOrnRWSLzrYqM4Q2eKbepwXPlgvg==
 
 react-native@0.59.9:
   version "0.59.9"
