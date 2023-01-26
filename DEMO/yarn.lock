@@ -4858,6 +4858,11 @@ react-is@^16.8.1, react-is@^16.8.3, react-is@^16.8.4:
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
   integrity sha1-W7weLSkUHJ+9/tRWND/ivEMKahY=
 
+react-native-selfadapt-modal@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/react-native-selfadapt-modal/-/react-native-selfadapt-modal-1.1.3.tgz#c576ea6c9335250d29ee8f77633cbb37c84464d4"
+  integrity sha512-tY2FyLpdIZovluukkWsnPe3QriagIkPAVofYQBltQk0dEgqSIh/10K7uPdQOrnRWSLzrYqM4Q2eKbepwXPlgvg==
+
 react-native@0.59.9:
   version "0.59.9"
   resolved "https://registry.npm.taobao.org/react-native/download/react-native-0.59.9.tgz#c94ee4fa35121720c05235a2dd6cdd2784bf5177"
@@ -5832,9 +5837,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 ua-parser-js@^0.7.18:
-  version "0.7.20"
-  resolved "https://registry.npm.taobao.org/ua-parser-js/download/ua-parser-js-0.7.20.tgz#7527178b82f6a62a0f243d1f94fd30e3e3c21098"
-  integrity sha1-dScXi4L2pioPJD0flP0w4+PCEJg=
+  version "0.7.33"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.33.tgz#1d04acb4ccef9293df6f70f2c3d22f3030d8b532"
+  integrity sha512-s8ax/CeZdK9R/56Sui0WM6y9OFREJarMRHqLB2EwkovemBxNQ+Bqu8GAsUnVcXKgphb++ghr/B2BZx4mahujPw==
 
 uglify-es@^3.1.9:
   version "3.3.9"
